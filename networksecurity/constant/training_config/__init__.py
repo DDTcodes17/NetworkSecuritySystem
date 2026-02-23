@@ -6,6 +6,7 @@ TRAIN_FILE_NAME: str = "train.csv"
 TEST_FILE_NAME: str = "test.csv"
 DATA_FILE: str = "phisingData.csv"
 
+PIPELINE_NAME: str = "NetworkSecurity"
 TARGET_VARIABLE: str = "Result"
 ARTIFACT_FILENAME: str = "artifact"
 

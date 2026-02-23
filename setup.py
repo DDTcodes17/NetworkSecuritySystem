@@ -24,7 +24,7 @@ def get_requirements()->List[str]:
     return requirements
 
 setup(
-    name="Network_Security",
+    name="networksecurity",
     version = "0.0.1",
     author = "Dhruv Tiwari",
     author_email = "tiwaridhruv15@gmail.com",
