@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from networksecurity.exceptions.exceptions import NetworkSecurityException
 from networksecurity.logger.logger import logging
 from networksecurity.entity.config_entity import DataIngestionConfig
+from networksecurity.entity.artifact_entity import DataIngestionArtifact
 
 from dotenv import load_dotenv
 from sklearn.model_selection import train_test_split
@@ -26,15 +27,17 @@ class DataIngestion:
 
         df = pd.DataFrame(collection.find())
         if "_id" in df.columns.to_list():
-            df = df.drop(columns=["_id"], axis=1)
+            df = df.drop("_id", axis=1)
         df = df.replace({"na":np.nan})
         return df
     
     def import_to_feature_store(self, df: pd.DataFrame):
         try:
             feature_store_path = self.data_ingestion_config.feature_store_path
-            os.makedirs(feature_store_path, exist_ok=True)
+            dir_path = os.path.dirname(feature_store_path)
+            os.makedirs(dir_path, exist_ok=True)
             df.to_csv(feature_store_path, index=False, header=True)
+            logging.info("Raw Data Imported")
         except Exception as e:
             raise NetworkSecurityException(e,sys)
     
@@ -55,8 +58,14 @@ class DataIngestion:
             raise NetworkSecurityException(e, sys)
     
     def initiate_data_ingestion(self):
-        df = self.convert_to_dataframe()
-        self.import_to_feature_store(df=df)
-        self.train_test_split(df=df)
-            
+        try:
+            df = self.convert_to_dataframe()
+            self.import_to_feature_store(df=df)
+            self.train_test_split(df=df)
+            ingestion_artifact = DataIngestionArtifact(train_file_path=self.data_ingestion_config.train_path,
+                                                    test_file_path=self.data_ingestion_config.test_path)
+            return ingestion_artifact
+            logging.info("Data Ingestion Completed")
+        except Exception as e:
+            raise NetworkSecurityException(e, sys)    
 
