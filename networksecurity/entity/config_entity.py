@@ -27,11 +27,12 @@ class DataIngestionConfig:
 
 #Data Validation: Validating Features, feature distribution, data drift
 class DataValidationConfig:
-    def __init__(self, data_ingestion_config:DataIngestionConfig):
-        self.train_path = os.path.join(data_ingestion_config.train_path)
-        self.test_path = os.path.join(data_ingestion_config.test_path)
-        
-        self.validation_dir_path = os.path.join(training_config.DATA_VALIDATION_DIR)
+    def __init__(self, training_par_config: TrainingConfig):
+        self.validation_dir_path = os.path.join(training_par_config.artifact_dir,training_config.DATA_VALIDATION_DIR)
         self.validated_path = os.path.join(self.validation_dir_path, training_config.DATA_VALIDATION_VALID_DIR)
+        self.valid_train_path = os.path.join(self.validated_path, training_config.TRAIN_FILE_NAME)
+        self.valid_test_path = os.path.join(self.validated_path, training_config.TEST_FILE_NAME)
         self.invalid_path = os.path.join(self.validation_dir_path, training_config.DATA_VALIDATION_INVALID_DIR)
+        self.invalid_train_path = os.path.join(self.invalid_path, training_config.TRAIN_FILE_NAME)
+        self.invalid_test_path = os.path.join(self.invalid_path, training_config.TEST_FILE_NAME)
         self.data_drift_report_path = os.path.join(self.validation_dir_path, training_config.DATA_VALIDATION_DRIFT_REPORT_DIR, training_config.DATA_VALIDATION_DRIFT_REPORT)
