@@ -9,6 +9,7 @@ DATA_FILE: str = "phisingData.csv"
 PIPELINE_NAME: str = "NetworkSecurity"
 TARGET_VARIABLE: str = "Result"
 ARTIFACT_FILENAME: str = "artifact"
+SCHEMA_FILE_PATH = os.path.join("schema_file", "schema.yaml")    #Path needed by read_yaml funtion
 
 
 """Constants for Data Ingestion"""
