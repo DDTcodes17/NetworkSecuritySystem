@@ -24,3 +24,14 @@ class DataIngestionConfig:
         self.train_test_split_ratio = training_config.DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO 
         self.collection_name = training_config.DATA_INGESTION_COLLECTION_NAME
         self.database_name = training_config.DATA_INGESTION_DATABASE_NAME
+
+#Data Validation: Validating Features, feature distribution, data drift
+class DataValidationConfig:
+    def __init__(self, data_ingestion_config:DataIngestionConfig):
+        self.train_path = os.path.join(data_ingestion_config.train_path)
+        self.test_path = os.path.join(data_ingestion_config.test_path)
+        
+        self.validation_dir_path = os.path.join(training_config.DATA_VALIDATION_DIR)
+        self.validated_path = os.path.join(self.validation_dir_path, training_config.DATA_VALIDATION_VALID_DIR)
+        self.invalid_path = os.path.join(self.validation_dir_path, training_config.DATA_VALIDATION_INVALID_DIR)
+        self.data_drift_report_path = os.path.join(self.validation_dir_path, training_config.DATA_VALIDATION_DRIFT_REPORT_DIR, training_config.DATA_VALIDATION_DRIFT_REPORT)

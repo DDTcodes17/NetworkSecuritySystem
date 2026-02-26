@@ -19,3 +19,9 @@ DATA_INGESTION_FEATURE_STORE: str = "feature_store"    # Storing raw data
 DATA_INGESTION_INGESTED_STORE: str = "ingested"        # Split data
 DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO: str = 0.2
 
+"""Constants for Data Validation"""
+DATA_VALIDATION_DIR:str = "data_validation"
+DATA_VALIDATION_VALID_DIR:str = "valid"
+DATA_VALIDATION_INVALID_DIR: str = "invalid"
+DATA_VALIDATION_DRIFT_REPORT_DIR:str = "drift_report"
+DATA_VALIDATION_DRIFT_REPORT:str = "report.yaml"
