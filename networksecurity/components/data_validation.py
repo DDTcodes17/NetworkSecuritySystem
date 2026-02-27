@@ -5,7 +5,7 @@ from networksecurity.entity.artifact_entity import DataIngestionArtifact, DataVa
 from networksecurity.exceptions.exceptions import NetworkSecurityException
 from networksecurity.logger.logger import logging
 from networksecurity.constant.training_config import SCHEMA_FILE_PATH
-from networksecurity.utils.main_utils.utils import read_yaml_file
+from networksecurity.utils.main_utils.utils import read_yaml_file, write_yaml_file
 import os, sys
 import pandas as pd
 from scipy.stats import ks_2samp
@@ -43,9 +43,28 @@ class DataValidation:
         else:
             return False
     
-    def data_drift_check(self, base_df, current_df):
-        pass
-    
+    def data_drift_check(self, base_df, current_df, threshold=0.05):
+        status = True
+        report = {}
+        for col in base_df.columns:
+            dist_1 = base_df[col]
+            dist_2 = current_df[col]
+            dist_check = ks_2samp(dist_1, dist_2)
+
+            if dist_check.pvalue >=threshold:
+                is_found=False
+            else:
+                is_found=True
+                status=False
+            report.update({col:
+                           {"dist_check": dist_check.pvalue,
+                            "is_found":is_found }})
+            #writing into drift file
+        drift_report_path = self.data_validation_config.data_drift_report_path
+        dir_path=os.path.dirname(drift_report_path)
+        os.makedirs(dir_path, exist_ok=True)
+        write_yaml_file(file_path=drift_report_path, content=report)
+
     
     def initiate_data_validation(self)->DataValidationArtifact:
         try:
