@@ -26,6 +26,27 @@ class DataValidation:
         except Exception as e:
             raise NetworkSecurityException(e, sys)
     
+    def is_same_num_columns(self, df:pd.DataFrame)->bool:
+        num_actual = len(self._schema_config)
+        
+        if len(df.columns)==num_actual:
+            status=True
+        else:
+            status=False
+        return status
+    
+    def is_numeric_cols_exist(self, df:pd.DataFrame)->bool:
+        num_actual = len(self._schema_config['numerical_columns'])
+        df_numeric = len([cols for cols in df.columns if df[cols].dtype!='o'])
+        if num_actual == df_numeric:
+            return True
+        else:
+            return False
+    
+    def data_drift_check(self, base_df, current_df):
+        pass
+    
+    
     def initiate_data_validation(self)->DataValidationArtifact:
         try:
             train_file_path = self.data_ingestion_artifact.train_file_path
@@ -33,5 +54,26 @@ class DataValidation:
 
             train_df = DataValidation.read_data(train_file_path)
             test_df = DataValidation.read_data(test_file_path)
+            logging.info("Beginning Data Validation: Number_of_columns")
+
+            train_status = DataValidation.is_same_num_columns(train_df)
+            if not train_status:
+                print("Train Validation not successful")
+            test_status = DataValidation.is_same_num_columns(test_df)
+            if not test_status:
+                print("Test validation not successful")
+            logging.info("No. of Columns Validation successful on both train and test")
+
+            logging.info("Numeric Columns exist Validation begin")
+            numeric_status_train = DataValidation.is_numeric_cols_exist(train_df)
+            if not numeric_status_train:
+                print("Different numeric columns found in Train set")
+            numeric_status_test = DataValidation.is_numeric_cols_exist(test_df)
+            if not numeric_status_test:
+                print("Different numeric columns found in Test set")
+            logging.info("Numeric Column Validation ends")
+
+            logging.info("Data Drift Validation begins")
+
         except Exception as e:
             raise NetworkSecurityException(e, sys)
