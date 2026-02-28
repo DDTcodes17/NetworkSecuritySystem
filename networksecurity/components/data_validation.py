@@ -27,14 +27,16 @@ class DataValidation:
             raise NetworkSecurityException(e, sys)
     
     def is_same_num_columns(self, df:pd.DataFrame)->bool:
-        num_actual = len(self._schema_config)
-        
-        if len(df.columns)==num_actual:
-            status=True
-        else:
-            status=False
-        return status
-    
+        try:
+            num_actual = len(self._schema_config)
+            
+            if len(df.columns)==num_actual:
+                status=True
+            else:
+                status=False
+            return status
+        except Exception as e:
+            raise NetworkSecurityException(e, sys)
     def is_numeric_cols_exist(self, df:pd.DataFrame)->bool:
         num_actual = len(self._schema_config['numerical_columns'])
         df_numeric = len([cols for cols in df.columns if df[cols].dtype!='o'])
@@ -44,27 +46,30 @@ class DataValidation:
             return False
     
     def data_drift_check(self, base_df, current_df, threshold=0.05):
-        status = True
-        report = {}
-        for col in base_df.columns:
-            dist_1 = base_df[col]
-            dist_2 = current_df[col]
-            dist_check = ks_2samp(dist_1, dist_2)
+        try:
+            status = True
+            report = {}
+            for col in base_df.columns:
+                dist_1 = base_df[col]
+                dist_2 = current_df[col]
+                dist_check = ks_2samp(dist_1, dist_2)
 
-            if dist_check.pvalue >=threshold:
-                is_found=False
-            else:
-                is_found=True
-                status=False
-            report.update({col:
-                           {"dist_check": dist_check.pvalue,
-                            "is_found":is_found }})
-            #writing into drift file
-        drift_report_path = self.data_validation_config.data_drift_report_path
-        dir_path=os.path.dirname(drift_report_path)
-        os.makedirs(dir_path, exist_ok=True)
-        write_yaml_file(file_path=drift_report_path, content=report)
-
+                if dist_check.pvalue >=threshold:
+                    is_found=False
+                else:
+                    is_found=True
+                    status=False
+                report.update({col:
+                            {"dist_check": dist_check.pvalue,
+                                "is_found":is_found }})
+                #writing into drift file
+            drift_report_path = self.data_validation_config.data_drift_report_path
+            dir_path=os.path.dirname(drift_report_path)
+            os.makedirs(dir_path, exist_ok=True)
+            write_yaml_file(file_path=drift_report_path, content=report)
+            return status, drift_report_path
+        except Exception as e:
+            raise NetworkSecurityException(e,sys)
     
     def initiate_data_validation(self)->DataValidationArtifact:
         try:
@@ -93,6 +98,32 @@ class DataValidation:
             logging.info("Numeric Column Validation ends")
 
             logging.info("Data Drift Validation begins")
+            status, drift_report_path = self.data_drift_check(base_df=train_df, current_df=test_df, threshold=0.05)
+            if status:
+                valid_train_path = self.data_validation_config.valid_train_path
+                valid_test_path = self.data_validation_config.valid_test_path
+                dir_path = os.path.dirname(valid_train_path)
+                os.makedirs(dir_path, exist_ok=True)
+                train_df.to_csv(valid_train_path, index=False, header=True)
+                test_df.to_csv(valid_test_path, index=False, header=True)
+            else:
+                invalid_train_path = self.data_validation_config.invalid_train_path
+                invalid_test_path = self.data_validation_config.invalid_test_path
+                dir_path = os.path.dirname(invalid_train_path)
+                os.makedirs(dir_path, exist_ok=True)
+                train_df.to_csv(invalid_train_path, index=False, header=True)
+                test_df.to_csv(invalid_test_path, index=False, header=True)
+            
+            data_validation_artifact = DataValidationArtifact(
+                validation_status=status,
+                valid_train_path=valid_train_path,
+                valid_test_path=valid_test_path,
+                invalid_train_path=invalid_train_path,
+                invalid_test_path=invalid_test_path,
+                data_drift_report=drift_report_path
+
+            )
+            return data_validation_artifact
 
         except Exception as e:
             raise NetworkSecurityException(e, sys)
