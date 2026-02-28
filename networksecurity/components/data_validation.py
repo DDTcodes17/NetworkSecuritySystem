@@ -28,7 +28,7 @@ class DataValidation:
     
     def is_same_num_columns(self, df:pd.DataFrame)->bool:
         try:
-            num_actual = len(self._schema_config)
+            num_actual = len(self._schema_config['columns'])
             
             if len(df.columns)==num_actual:
                 status=True
@@ -40,6 +40,7 @@ class DataValidation:
     def is_numeric_cols_exist(self, df:pd.DataFrame)->bool:
         num_actual = len(self._schema_config['numerical_columns'])
         df_numeric = len([cols for cols in df.columns if df[cols].dtype!='o'])
+        print(df_numeric)
         if num_actual == df_numeric:
             return True
         else:
@@ -60,8 +61,10 @@ class DataValidation:
                     is_found=True
                     status=False
                 report.update({col:
-                            {"dist_check": dist_check.pvalue,
-                                "is_found":is_found }})
+                            #pvalue is numpy.float. Unreadable object when written to .yaml
+                            #Hence converted to python native float
+                            {"dist_check": float(dist_check.pvalue),    
+                                "is_found":is_found }})                  
                 #writing into drift file
             drift_report_path = self.data_validation_config.data_drift_report_path
             dir_path=os.path.dirname(drift_report_path)
@@ -80,24 +83,28 @@ class DataValidation:
             test_df = DataValidation.read_data(test_file_path)
             logging.info("Beginning Data Validation: Number_of_columns")
 
-            train_status = DataValidation.is_same_num_columns(train_df)
+            train_status = self.is_same_num_columns(df=train_df)
             if not train_status:
                 print("Train Validation not successful")
-            test_status = DataValidation.is_same_num_columns(test_df)
+            test_status = self.is_same_num_columns(df=test_df)
             if not test_status:
                 print("Test validation not successful")
             logging.info("No. of Columns Validation successful on both train and test")
 
             logging.info("Numeric Columns exist Validation begin")
-            numeric_status_train = DataValidation.is_numeric_cols_exist(train_df)
+            numeric_status_train = self.is_numeric_cols_exist(train_df)
             if not numeric_status_train:
                 print("Different numeric columns found in Train set")
-            numeric_status_test = DataValidation.is_numeric_cols_exist(test_df)
+            numeric_status_test = self.is_numeric_cols_exist(test_df)
             if not numeric_status_test:
                 print("Different numeric columns found in Test set")
             logging.info("Numeric Column Validation ends")
 
             logging.info("Data Drift Validation begins")
+            valid_train_path = None
+            valid_test_path = None
+            invalid_train_path = None
+            invalid_test_path = None
             status, drift_report_path = self.data_drift_check(base_df=train_df, current_df=test_df, threshold=0.05)
             if status:
                 valid_train_path = self.data_validation_config.valid_train_path

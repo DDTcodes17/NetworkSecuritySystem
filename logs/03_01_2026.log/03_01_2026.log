@@ -1,0 +1,11 @@
+[ 2026-03-01 01:15:15,118 ] 40 root - INFO -Raw Data Imported
+[ 2026-03-01 01:15:15,118 ] 47 root - INFO -Train Test Split Initiated
+[ 2026-03-01 01:15:15,118 ] 51 root - INFO -Importing Training and testing data
+[ 2026-03-01 01:15:15,177 ] 56 root - INFO -Import Successful
+[ 2026-03-01 01:15:15,178 ] 17 root - INFO -Data Ingestion Component Successfull
+[ 2026-03-01 01:15:15,295 ] 84 root - INFO -Beginning Data Validation: Number_of_columns
+[ 2026-03-01 01:15:15,295 ] 92 root - INFO -No. of Columns Validation successful on both train and test
+[ 2026-03-01 01:15:15,295 ] 94 root - INFO -Numeric Columns exist Validation begin
+[ 2026-03-01 01:15:15,299 ] 101 root - INFO -Numeric Column Validation ends
+[ 2026-03-01 01:15:15,299 ] 103 root - INFO -Data Drift Validation begins
+[ 2026-03-01 01:15:15,448 ] 25 root - INFO -Data Validation Component Successful
