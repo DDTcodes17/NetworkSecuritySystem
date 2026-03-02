@@ -36,3 +36,12 @@ class DataValidationConfig:
         self.invalid_train_path = os.path.join(self.invalid_path, training_config.TRAIN_FILE_NAME)
         self.invalid_test_path = os.path.join(self.invalid_path, training_config.TEST_FILE_NAME)
         self.data_drift_report_path = os.path.join(self.validation_dir_path, training_config.DATA_VALIDATION_DRIFT_REPORT_DIR, training_config.DATA_VALIDATION_DRIFT_REPORT)
+
+# Data Transformation: Normalization, Standardization, Etc.
+class DataTransformationConfig:
+    def __init__(self, training_par_config: TrainingConfig):
+        self.tranformation_dir = os.path.join(training_par_config.artifact_dir, training_config.DATA_TRANSFORMATION_DIR)
+        self.transformed_data_dir = os.path.join(self.tranformation_dir, training_config.DATA_TRANSFORMED_DATA_DIR)
+        self.data_preprocessor_dir = os.path.join(self.tranformation_dir, training_config.DATA_TRANSFORMATION_PREPROCESSOR_DIR)
+        
+

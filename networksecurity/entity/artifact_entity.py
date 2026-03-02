@@ -13,3 +13,9 @@ class DataValidationArtifact:             #Output of DataValidation
     invalid_train_path:str
     invalid_test_path:str
     data_drift_report:str
+
+@dataclass
+class DataTransformationArtifact:       #Outputs of Data Transformation
+    transformed_train_path: str
+    transformed_test_path: str
+    preprocessor_path: str

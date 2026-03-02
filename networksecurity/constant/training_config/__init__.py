@@ -1,5 +1,6 @@
 import os
 import sys
+import numpy as np
 
 """Commom Constants for training"""
 TRAIN_FILE_NAME: str = "train.csv"
@@ -26,3 +27,14 @@ DATA_VALIDATION_VALID_DIR:str = "valid"
 DATA_VALIDATION_INVALID_DIR: str = "invalid"
 DATA_VALIDATION_DRIFT_REPORT_DIR:str = "drift_report"
 DATA_VALIDATION_DRIFT_REPORT:str = "report.yaml"
+
+"""Constants for Data Transformation"""
+DATA_TRANSFORMATION_DIR:str = "data_transformation"
+DATA_TRANSFORMED_DATA_DIR:str = "transformed"
+DATA_TRANSFORMATION_PREPROCESSOR_DIR = "preprocessor"
+
+DATA_TRANSFORMATION_IMPUTER_PARAMS: dict = {
+    "missing_values": np.nan,
+    "n_neighbors": 3,
+    "weights": "uniform"
+}
