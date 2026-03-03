@@ -30,7 +30,7 @@ if __name__ == "__main__":
     logging.info("Data Validation Component Successful")
 
     print("Now Data Transformation")
-    transformation_config = DataTransformationConfig(training_par_config=TrainingConfig)
+    transformation_config = DataTransformationConfig(training_par_config=training_par_config)
     transformation_obj = DataTranformation(validation_artifact=validation_artifact,transformation_config=transformation_config)
     transformation_artifact = transformation_obj.initiate_transformation()
     print(transformation_artifact)

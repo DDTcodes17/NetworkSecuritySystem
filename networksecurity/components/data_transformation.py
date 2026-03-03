@@ -34,8 +34,8 @@ class DataTranformation:
     
     def initiate_transformation(self)->DataTransformationArtifact:
         logging.info("Data Transformation Initiated")
-        train_df = self.validation_artifact.valid_train_path
-        test_df = self.validation_artifact.valid_test_path
+        train_df = DataTranformation.read_data(self.validation_artifact.valid_train_path)
+        test_df = DataTranformation.read_data(self.validation_artifact.valid_test_path)
 
         logging.info("Segregating Data into Input and target")
         #Train
