@@ -31,8 +31,8 @@ DATA_VALIDATION_DRIFT_REPORT:str = "report.yaml"
 """Constants for Data Transformation"""
 DATA_TRANSFORMATION_DIR:str = "data_transformation"
 DATA_TRANSFORMED_DATA_DIR:str = "transformed"
-DATA_TRANSFORMATION_PREPROCESSOR_DIR = "preprocessor"
-
+DATA_TRANSFORMATION_PREPROCESSOR_DIR:str = "preprocessor"
+DATA_TRASNSFORMATION_PREPROCESSOR_FILE:str = "preprocessor.pkl"
 DATA_TRANSFORMATION_IMPUTER_PARAMS: dict = {
     "missing_values": np.nan,
     "n_neighbors": 3,

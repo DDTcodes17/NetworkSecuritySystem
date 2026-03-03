@@ -42,6 +42,10 @@ class DataTransformationConfig:
     def __init__(self, training_par_config: TrainingConfig):
         self.tranformation_dir = os.path.join(training_par_config.artifact_dir, training_config.DATA_TRANSFORMATION_DIR)
         self.transformed_data_dir = os.path.join(self.tranformation_dir, training_config.DATA_TRANSFORMED_DATA_DIR)
+        self.transformed_train_path = os.path.join(self.transformed_data_dir, training_config.TRAIN_FILE_NAME.replace("csv", "npy"),)
+        self.transformed_test_path = os.path.join(self.transformed_data_dir, training_config.TEST_FILE_NAME.replace("csv","npy"),)
         self.data_preprocessor_dir = os.path.join(self.tranformation_dir, training_config.DATA_TRANSFORMATION_PREPROCESSOR_DIR)
+        self.data_preprocessor_path = os.path.join(self.data_preprocessor_dir, training_config.DATA_TRASNSFORMATION_PREPROCESSOR_FILE,)
+
         
 
