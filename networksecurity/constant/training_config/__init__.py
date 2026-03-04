@@ -38,3 +38,7 @@ DATA_TRANSFORMATION_IMPUTER_PARAMS: dict = {
     "n_neighbors": 3,
     "weights": "uniform"
 }
+
+"""Constants for Model Training"""
+MODEL_TRAINER_DIR: str = "model_trainer"
+MODEL_TRAINER_PATH: str = "model.pkl"

@@ -19,3 +19,7 @@ class DataTransformationArtifact:       #Outputs of Data Transformation
     transformed_train_path: str
     transformed_test_path: str
     preprocessor_path: str
+
+@dataclass
+class ModelTrainerArtifact:
+    model_path:str

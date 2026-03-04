@@ -47,5 +47,7 @@ class DataTransformationConfig:
         self.data_preprocessor_dir = os.path.join(self.tranformation_dir, training_config.DATA_TRANSFORMATION_PREPROCESSOR_DIR)
         self.data_preprocessor_path = os.path.join(self.data_preprocessor_dir, training_config.DATA_TRASNSFORMATION_PREPROCESSOR_FILE,)
 
-        
-
+class ModelTrainerConfig:
+    def __init__(self, training_par_config:TrainingConfig):
+        self.model_trainer_dir = os.path.join(training_par_config.artifact_dir, training_config.MODEL_TRAINER_DIR)
+        self.model_file = os.path.join(self.model_trainer_dir, training_config.MODEL_TRAINER_PATH)
