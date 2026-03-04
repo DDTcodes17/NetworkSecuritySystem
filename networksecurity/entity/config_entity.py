@@ -51,3 +51,6 @@ class ModelTrainerConfig:
     def __init__(self, training_par_config:TrainingConfig):
         self.model_trainer_dir = os.path.join(training_par_config.artifact_dir, training_config.MODEL_TRAINER_DIR)
         self.model_file = os.path.join(self.model_trainer_dir, training_config.MODEL_TRAINER_PATH)
+        self.model_score_threshold:float = training_config.MODEL_TRAINER_EXPECTED_ACCURACY
+        self.model_overfitting_underfitting_threshold:float = training_config.MODEL_TRAINER_OVERFITTING_UNDERFITTING_THRESHOLD
+        

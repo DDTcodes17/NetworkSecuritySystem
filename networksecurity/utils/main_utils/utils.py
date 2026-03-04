@@ -42,3 +42,24 @@ def save_pickle_object(file_path:str, obj:object):
             pickle.dump(obj, file)
     except Exception as e:
         raise NetworkSecurityException(e, sys)
+    
+def load_pickle_object(file_path:str)->object:
+    try:
+        if not os.path.exists(file_path):
+            raise Exception(f"{file_path} missing. Please Crosscheck.")
+        else:
+            with open(file_path, "rb") as file:
+                print(file)
+                return pickle.load(file)
+    except Exception as e:
+        raise NetworkSecurityException(e, sys)
+
+def load_numpy_array(file_path)->np.array:
+    try:
+        if not os.path.exists(file_path):
+            raise Exception(f"{file_path} missing. Please Crosscheck.")
+        else:
+            with open(file_path, "rb") as file:
+                return np.load(file)
+    except Exception as e:
+        raise NetworkSecurityException(e, sys)

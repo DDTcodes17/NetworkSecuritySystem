@@ -21,5 +21,13 @@ class DataTransformationArtifact:       #Outputs of Data Transformation
     preprocessor_path: str
 
 @dataclass
+class ClassificationMetricArtifact:
+    f1_score:float
+    precision:float
+    recall:float
+
+@dataclass
 class ModelTrainerArtifact:
     model_path:str
+    train_metric_score: ClassificationMetricArtifact
+    test_metric_score: ClassificationMetricArtifact
