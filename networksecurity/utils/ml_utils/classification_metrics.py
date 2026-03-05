@@ -32,13 +32,14 @@ def evaluate_model(X_train, X_test, y_train, y_test):
             models = {
                 "Logistic Regression": LogisticRegression(),
                 "KNN": KNeighborsClassifier(),
-                    "Decision Tree": DecisionTreeClassifier(),
-                    "Random Forest": RandomForestClassifier(),
-                    "Gradient Boosting": GradientBoostingClassifier(),
-                    "XGBoost": XGBClassifier()
+                "Decision Tree": DecisionTreeClassifier(),
+                "Random Forest": RandomForestClassifier(),
+                "Gradient Boosting": GradientBoostingClassifier(),
+                "XGBoost": XGBClassifier()
                 }
 
             params={
+                "Logistic Regression":{},
                 "KNN":{
                     "n_neighbors":[4,5,6]
                 },
@@ -62,13 +63,13 @@ def evaluate_model(X_train, X_test, y_train, y_test):
                 param = list(params.values())[i]
                 gs = GridSearchCV(model, param_grid=param, cv=3)
                 gs.fit(X_train, y_train)
-                model.set_params(**gs.best_score_)
+                model.set_params(**gs.best_params_)
                 model.fit(X_train, y_train)
 
                 y_test_pred = model.predict(X_test)
                 test_accuracy = accuracy_score(y_true=y_test, y_pred=y_test_pred)
                 report[list(models.keys())[i]] = test_accuracy
-                return report
+            return report
         
         except Exception as e:
             raise NetworkSecurityException(e, sys)    

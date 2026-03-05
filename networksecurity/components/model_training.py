@@ -42,6 +42,10 @@ class ModelTrainer:
         best_model_accuracy = max(sorted(list(model_report.values())))
         best_model_alias = list(model_report.keys())[list(model_report.values()).index(best_model_accuracy)]
         best_model = models[best_model_alias]
+        print(best_model_alias)
+        
+        #One more instance created, hence need to fit() again
+        best_model.fit(X_train, y_train)
 
         logging.info("Obtaining ClassificationMetric Artifacts/Reports")
         y_train_pred = best_model.predict(X_train)
@@ -59,13 +63,14 @@ class ModelTrainer:
         train_arr = load_numpy_array(self.model_input.transformed_train_path)
         test_arr = load_numpy_array(self.model_input.transformed_test_path)
         preprocessor = load_pickle_object(self.model_input.preprocessor_path)
-        model_test_metric, model_train_metric, model = self.train_evaluate_model()
         X_train, X_test, y_train, y_test = (
             train_arr[:, :-1],
             test_arr[:, :-1],
             train_arr[:, -1],
             test_arr[:, -1]
         )
+        model_test_metric, model_train_metric, model = self.train_evaluate_model(X_train, X_test,
+                                                                                 y_train, y_test)
 
         network_model = NetworkModel(preprocessor=preprocessor, model=model)   #Use for new Test Data
 
