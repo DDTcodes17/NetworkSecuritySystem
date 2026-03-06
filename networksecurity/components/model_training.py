@@ -1,6 +1,7 @@
 import os, sys
 import pandas as pd
 import numpy as np
+import mlflow
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
@@ -23,7 +24,19 @@ class ModelTrainer:
     def __init__(self, transformation_artifact: DataTransformationArtifact, trainer_config: ModelTrainerConfig):
         self.model_input = transformation_artifact
         self.model_config = trainer_config
-    
+
+    def track_model(self, best_model, classification_metric):
+        with mlflow.start_run():
+            f1_score = classification_metric.f1_score
+            precision = classification_metric.precision
+            recall = classification_metric.recall
+
+            mlflow.log_metric("f1_score", f1_score)
+            mlflow.log_metric("precision_score", precision)
+            mlflow.lof_metric("recall_score", recall)
+            mlflow.sklearn.log_model(best_model, "model")
+
+
     def train_evaluate_model(self, X_train, X_test, y_train, y_test):
         models = {
                 "Logistic Regression": LogisticRegression(),
@@ -49,14 +62,16 @@ class ModelTrainer:
 
         logging.info("Obtaining ClassificationMetric Artifacts/Reports")
         y_train_pred = best_model.predict(X_train)
-        clasification_train_metric = get_classification_score(y_train, y_train_pred)
+        classification_train_metric = get_classification_score(y_train, y_train_pred)
+        self.track_model(best_model, classification_train_metric)
       
         y_test_pred = best_model.predict(X_test)
         classification_test_metric = get_classification_score(y_test, y_test_pred)
+        self.track_model(best_model, classification_test_metric)
 
         logging.info("Saving Best Model as Pickle File.")
         save_pickle_object(self.model_config.model_file, obj=best_model)   #Makes directory also
-        return (classification_test_metric, clasification_train_metric, best_model)
+        return (classification_test_metric, classification_train_metric, best_model)
 
     
     def initiate_model_training(self)->ModelTrainerArtifact:

@@ -10,4 +10,5 @@ scikit-learn
 pyaml
 dill
 xgboost
+mlflow
 #-e .
