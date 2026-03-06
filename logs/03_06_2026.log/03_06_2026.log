@@ -1,0 +1,23 @@
+[ 2026-03-06 19:44:35,059 ] 40 root - INFO -Raw Data Imported
+[ 2026-03-06 19:44:35,059 ] 47 root - INFO -Train Test Split Initiated
+[ 2026-03-06 19:44:35,059 ] 51 root - INFO -Importing Training and testing data
+[ 2026-03-06 19:44:35,110 ] 56 root - INFO -Import Successful
+[ 2026-03-06 19:44:35,110 ] 26 root - INFO -Data Ingestion Component Successfull
+[ 2026-03-06 19:44:35,199 ] 84 root - INFO -Beginning Data Validation: Number_of_columns
+[ 2026-03-06 19:44:35,199 ] 92 root - INFO -No. of Columns Validation successful on both train and test
+[ 2026-03-06 19:44:35,199 ] 94 root - INFO -Numeric Columns exist Validation begin
+[ 2026-03-06 19:44:35,199 ] 101 root - INFO -Numeric Column Validation ends
+[ 2026-03-06 19:44:35,199 ] 103 root - INFO -Data Drift Validation begins
+[ 2026-03-06 19:44:35,307 ] 34 root - INFO -Data Validation Component Successful
+[ 2026-03-06 19:44:35,307 ] 36 root - INFO -Data Transformation Initiated
+[ 2026-03-06 19:44:35,384 ] 40 root - INFO -Segregating Data into Input and target
+[ 2026-03-06 19:44:35,384 ] 51 root - INFO -Performing KNN Imputation as a Pipeline
+[ 2026-03-06 19:44:35,392 ] 55 root - INFO -Preprocessing Imputation Completed
+[ 2026-03-06 19:44:35,392 ] 57 root - INFO -Creating and saving numpy arrays and preprocessor files
+[ 2026-03-06 19:44:35,399 ] 65 root - INFO -Returning artifacts
+[ 2026-03-06 19:44:35,401 ] 41 root - INFO -Data Transformation Complete
+[ 2026-03-06 19:44:35,443 ] 50 root - INFO -Model Training And Evaluation Simultaneous
+[ 2026-03-06 19:44:46,288 ] 53 root - INFO -Obtaining Best Model and best accuracy.
+[ 2026-03-06 19:44:46,640 ] 63 root - INFO -Obtaining ClassificationMetric Artifacts/Reports
+[ 2026-03-06 19:44:56,489 ] 72 root - INFO -Saving Best Model as Pickle File.
+[ 2026-03-06 19:44:56,489 ] 48 root - INFO -Model Training Complete

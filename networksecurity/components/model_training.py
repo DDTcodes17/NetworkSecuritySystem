@@ -33,7 +33,7 @@ class ModelTrainer:
 
             mlflow.log_metric("f1_score", f1_score)
             mlflow.log_metric("precision_score", precision)
-            mlflow.lof_metric("recall_score", recall)
+            mlflow.log_metric("recall_score", recall)
             mlflow.sklearn.log_model(best_model, "model")
 
 
