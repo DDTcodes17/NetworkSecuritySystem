@@ -19,6 +19,8 @@ from networksecurity.utils.ml_utils.network_model import NetworkModel
 from networksecurity.exceptions.exceptions import NetworkSecurityException
 from networksecurity.logger.logger import logging
 
+import dagshub
+dagshub.init(repo_name="NetworkSecuritySystem", repo_owner="DDTcodes17", mlflow=True)
 
 class ModelTrainer:
     def __init__(self, transformation_artifact: DataTransformationArtifact, trainer_config: ModelTrainerConfig):
