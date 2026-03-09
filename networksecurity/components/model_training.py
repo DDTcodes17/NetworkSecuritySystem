@@ -72,7 +72,11 @@ class ModelTrainer:
         self.track_model(best_model, classification_test_metric)
 
         logging.info("Saving Best Model as Pickle File.")
-        save_pickle_object(self.model_config.model_file, obj=best_model)   #Makes directory also
+        save_pickle_object(self.model_config.model_file, obj=best_model)   #Makes directory 
+        
+        logging.info("Model Pusher")
+        save_pickle_object("final_model/model.pkl", best_model)
+        
         return (classification_test_metric, classification_train_metric, best_model)
 
     

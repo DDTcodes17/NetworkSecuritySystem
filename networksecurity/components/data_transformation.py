@@ -61,7 +61,9 @@ class DataTranformation:
         save_numpy_array(file_path=self.transformation_config.transformed_train_path, array=train_arr)
         save_numpy_array(file_path=self.transformation_config.transformed_test_path, array=test_arr)
         save_pickle_object(file_path=self.transformation_config.data_preprocessor_path, obj=preprocessor)
-
+        
+        logging.info("Preprocessor Pusher")
+        save_pickle_object("final_model/preprocessor.pkl", preprocessor)
         logging.info("Returning artifacts")
         data_transformation_artifact = DataTransformationArtifact(
             transformed_train_path=self.transformation_config.transformed_train_path,

@@ -1,0 +1,31 @@
+[ 2026-03-09 21:08:31,282 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2026-03-09 21:08:31,292 ] 107 dagshub - INFO -Accessing as DDTcodes17
+[ 2026-03-09 21:08:32,539 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/repos/DDTcodes17/NetworkSecuritySystem "HTTP/1.1 200 OK"
+[ 2026-03-09 21:08:33,765 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2026-03-09 21:08:33,781 ] 107 dagshub - INFO -Initialized MLflow to track repo "DDTcodes17/NetworkSecuritySystem"
+[ 2026-03-09 21:08:33,781 ] 107 dagshub - INFO -Repository DDTcodes17/NetworkSecuritySystem initialized!
+[ 2026-03-09 21:08:39,161 ] 40 root - INFO -Raw Data Imported
+[ 2026-03-09 21:08:39,161 ] 47 root - INFO -Train Test Split Initiated
+[ 2026-03-09 21:08:39,173 ] 51 root - INFO -Importing Training and testing data
+[ 2026-03-09 21:08:39,225 ] 56 root - INFO -Import Successful
+[ 2026-03-09 21:08:39,227 ] 26 root - INFO -Data Ingestion Component Successfull
+[ 2026-03-09 21:08:39,345 ] 84 root - INFO -Beginning Data Validation: Number_of_columns
+[ 2026-03-09 21:08:39,345 ] 92 root - INFO -No. of Columns Validation successful on both train and test
+[ 2026-03-09 21:08:39,345 ] 94 root - INFO -Numeric Columns exist Validation begin
+[ 2026-03-09 21:08:39,345 ] 101 root - INFO -Numeric Column Validation ends
+[ 2026-03-09 21:08:39,345 ] 103 root - INFO -Data Drift Validation begins
+[ 2026-03-09 21:08:39,516 ] 34 root - INFO -Data Validation Component Successful
+[ 2026-03-09 21:08:39,516 ] 36 root - INFO -Data Transformation Initiated
+[ 2026-03-09 21:08:39,608 ] 40 root - INFO -Segregating Data into Input and target
+[ 2026-03-09 21:08:39,610 ] 51 root - INFO -Performing KNN Imputation as a Pipeline
+[ 2026-03-09 21:08:39,616 ] 55 root - INFO -Preprocessing Imputation Completed
+[ 2026-03-09 21:08:39,616 ] 57 root - INFO -Creating and saving numpy arrays and preprocessor files
+[ 2026-03-09 21:08:39,624 ] 65 root - INFO -Preprocessor Pusher
+[ 2026-03-09 21:08:39,624 ] 67 root - INFO -Returning artifacts
+[ 2026-03-09 21:08:39,624 ] 41 root - INFO -Data Transformation Complete
+[ 2026-03-09 21:08:39,674 ] 52 root - INFO -Model Training And Evaluation Simultaneous
+[ 2026-03-09 21:08:53,049 ] 55 root - INFO -Obtaining Best Model and best accuracy.
+[ 2026-03-09 21:08:53,471 ] 65 root - INFO -Obtaining ClassificationMetric Artifacts/Reports
+[ 2026-03-09 21:09:45,906 ] 74 root - INFO -Saving Best Model as Pickle File.
+[ 2026-03-09 21:09:45,953 ] 77 root - INFO -Model Pusher
+[ 2026-03-09 21:09:45,988 ] 48 root - INFO -Model Training Complete
