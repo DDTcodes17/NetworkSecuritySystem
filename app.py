@@ -48,3 +48,6 @@ async def train_route():
         return Response("Training is successful")
     except Exception as e:
         raise NetworkSecurityException(e, sys)
+    
+if __name__ == "__main__":
+    app.run(app, host = "localhost", port=5000)

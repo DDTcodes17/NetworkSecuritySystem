@@ -12,4 +12,6 @@ dill
 xgboost
 mlflow
 dagshub
+fastapi
+uvicorn
 #-e .

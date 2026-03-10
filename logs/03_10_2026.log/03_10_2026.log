@@ -1,0 +1,45 @@
+[ 2026-03-10 20:47:31,058 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2026-03-10 20:47:31,066 ] 107 dagshub - INFO -Accessing as DDTcodes17
+[ 2026-03-10 20:47:32,154 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/repos/DDTcodes17/NetworkSecuritySystem "HTTP/1.1 200 OK"
+[ 2026-03-10 20:47:33,316 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2026-03-10 20:47:33,317 ] 107 dagshub - INFO -Initialized MLflow to track repo "DDTcodes17/NetworkSecuritySystem"
+[ 2026-03-10 20:47:33,317 ] 107 dagshub - INFO -Repository DDTcodes17/NetworkSecuritySystem initialized!
+[ 2026-03-10 20:48:07,245 ] 75 root - INFO -Starting Pipeline
+[ 2026-03-10 20:48:07,245 ] 28 root - INFO -Initiating Data Ingestion Configuration.
+[ 2026-03-10 20:52:57,602 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2026-03-10 20:52:57,625 ] 107 dagshub - INFO -Accessing as DDTcodes17
+[ 2026-03-10 20:52:59,524 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/repos/DDTcodes17/NetworkSecuritySystem "HTTP/1.1 200 OK"
+[ 2026-03-10 20:53:01,336 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2026-03-10 20:53:01,337 ] 107 dagshub - INFO -Initialized MLflow to track repo "DDTcodes17/NetworkSecuritySystem"
+[ 2026-03-10 20:53:01,342 ] 107 dagshub - INFO -Repository DDTcodes17/NetworkSecuritySystem initialized!
+[ 2026-03-10 20:53:27,964 ] 75 root - INFO -Starting Pipeline
+[ 2026-03-10 20:53:27,964 ] 28 root - INFO -Initiating Data Ingestion Configuration.
+[ 2026-03-10 20:53:30,622 ] 40 root - INFO -Raw Data Imported
+[ 2026-03-10 20:53:30,635 ] 47 root - INFO -Train Test Split Initiated
+[ 2026-03-10 20:53:30,635 ] 51 root - INFO -Importing Training and testing data
+[ 2026-03-10 20:53:30,817 ] 56 root - INFO -Import Successful
+[ 2026-03-10 20:53:30,817 ] 32 root - INFO -Ingestion Completed.
+[ 2026-03-10 20:53:30,817 ] 39 root - INFO -Data Validation Initiated.
+[ 2026-03-10 20:53:31,001 ] 84 root - INFO -Beginning Data Validation: Number_of_columns
+[ 2026-03-10 20:53:31,001 ] 92 root - INFO -No. of Columns Validation successful on both train and test
+[ 2026-03-10 20:53:31,001 ] 94 root - INFO -Numeric Columns exist Validation begin
+[ 2026-03-10 20:53:31,011 ] 101 root - INFO -Numeric Column Validation ends
+[ 2026-03-10 20:53:31,011 ] 103 root - INFO -Data Drift Validation begins
+[ 2026-03-10 20:53:31,501 ] 44 root - INFO -Data Validation Completed.
+[ 2026-03-10 20:53:31,501 ] 51 root - INFO -Data Transformation Inititated.
+[ 2026-03-10 20:53:31,501 ] 36 root - INFO -Data Transformation Initiated
+[ 2026-03-10 20:53:31,635 ] 40 root - INFO -Segregating Data into Input and target
+[ 2026-03-10 20:53:31,635 ] 51 root - INFO -Performing KNN Imputation as a Pipeline
+[ 2026-03-10 20:53:31,662 ] 55 root - INFO -Preprocessing Imputation Completed
+[ 2026-03-10 20:53:31,662 ] 57 root - INFO -Creating and saving numpy arrays and preprocessor files
+[ 2026-03-10 20:53:31,681 ] 65 root - INFO -Preprocessor Pusher
+[ 2026-03-10 20:53:31,686 ] 67 root - INFO -Returning artifacts
+[ 2026-03-10 20:53:31,686 ] 56 root - INFO -Data transformation Completed.
+[ 2026-03-10 20:53:31,686 ] 63 root - INFO -Model Training Initiated.
+[ 2026-03-10 20:53:31,751 ] 52 root - INFO -Model Training And Evaluation Simultaneous
+[ 2026-03-10 20:53:47,423 ] 55 root - INFO -Obtaining Best Model and best accuracy.
+[ 2026-03-10 20:53:47,917 ] 65 root - INFO -Obtaining ClassificationMetric Artifacts/Reports
+[ 2026-03-10 20:54:29,067 ] 74 root - INFO -Saving Best Model as Pickle File.
+[ 2026-03-10 20:54:29,067 ] 77 root - INFO -Model Pusher
+[ 2026-03-10 20:54:29,091 ] 68 root - INFO -Model Trained.
+[ 2026-03-10 20:54:29,091 ] 80 root - INFO -Pipeline Finished
