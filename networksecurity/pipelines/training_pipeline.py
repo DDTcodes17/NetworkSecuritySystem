@@ -69,3 +69,15 @@ class TrainingPipeline:
             return model_trainer_artifact
         except Exception as e:
             raise NetworkSecurityException(e, sys)
+    
+    def run_pipeline(self):
+        try:
+            logging.info("Starting Pipeline")
+            ingestion_artifact = self.start_data_ingestion()
+            validation_artifact = self.start_data_validation(ingestion_artifact)
+            transformation_artifact = self.start_data_transformation(validation_artifact)
+            model_trainer_artifact = self.start_model_training(transformation_artifact)
+            logging.info("Pipeline Finished")
+            return model_trainer_artifact
+        except Exception as e:
+            raise NetworkSecurityException(e, sys)
