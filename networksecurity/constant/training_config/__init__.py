@@ -44,3 +44,6 @@ MODEL_TRAINER_DIR: str = "model_trainer"
 MODEL_TRAINER_PATH: str = "model.pkl"
 MODEL_TRAINER_EXPECTED_ACCURACY:float = 0.6
 MODEL_TRAINER_OVERFITTING_UNDERFITTING_THRESHOLD:float = 0.05
+
+"""AWS Cloud Constants"""
+TRAINING_BUCKET_NAME = "networksecurity"
