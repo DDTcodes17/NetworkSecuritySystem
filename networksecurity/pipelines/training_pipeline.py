@@ -71,6 +71,20 @@ class TrainingPipeline:
         except Exception as e:
             raise NetworkSecurityException(e, sys)
     
+    def s3_artifact_syncer(self):
+        try:
+            aws_bucket_url = f"s3://{training_config.TRAINING_BUCKET_NAME}/artifact/{self.training_pipeline_config.timestamp}"
+            self.s3_sync.sync_folder_to_s3(bucket_url=aws_bucket_url, folder=self.training_pipeline_config.artifact_dir)
+        except Exception as e:
+            raise NetworkSecurityException(e, sys)
+        
+    def s3_model_syncer(self):
+        try:
+            aws_bucket_url = f"s3://{training_config.TRAINING_BUCKET_NAME}/final_model/{self.training_pipeline_config.timestamp}"
+            self.s3_sync.sync_folder_to_s3(bucket_url=aws_bucket_url, folder=self.training_pipeline_config.model_directory)
+        except Exception as e:
+            raise NetworkSecurityException(e, sys)
+        
     def run_pipeline(self):
         try:
             logging.info("Starting Pipeline")
