@@ -3,7 +3,6 @@ import sys
 import numpy as np
 import pandas as pd
 import pymongo
-from dataclasses import dataclass
 from networksecurity.exceptions.exceptions import NetworkSecurityException
 from networksecurity.logger.logger import logging
 from networksecurity.entity.config_entity import DataIngestionConfig
@@ -64,8 +63,8 @@ class DataIngestion:
             self.train_test_split(df=df)
             ingestion_artifact = DataIngestionArtifact(train_file_path=self.data_ingestion_config.train_path,
                                                     test_file_path=self.data_ingestion_config.test_path)
-            return ingestion_artifact
             logging.info("Data Ingestion Completed")
+            return ingestion_artifact
         except Exception as e:
             raise NetworkSecurityException(e, sys)    
 

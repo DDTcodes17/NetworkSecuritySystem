@@ -92,6 +92,10 @@ class TrainingPipeline:
             validation_artifact = self.start_data_validation(ingestion_artifact)
             transformation_artifact = self.start_data_transformation(validation_artifact)
             model_trainer_artifact = self.start_model_training(transformation_artifact)
+            
+            self.s3_artifact_syncer()
+            self.s3_model_syncer()
+            
             logging.info("Pipeline Finished")
             return model_trainer_artifact
         except Exception as e:
