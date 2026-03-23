@@ -1,0 +1,12 @@
+[ 2026-03-23 20:55:35,445 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2026-03-23 20:55:35,448 ] 107 dagshub - INFO -Accessing as DDTcodes17
+[ 2026-03-23 20:55:36,671 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/repos/DDTcodes17/NetworkSecuritySystem "HTTP/1.1 200 OK"
+[ 2026-03-23 20:55:37,996 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2026-03-23 20:55:38,007 ] 107 dagshub - INFO -Initialized MLflow to track repo "DDTcodes17/NetworkSecuritySystem"
+[ 2026-03-23 20:55:38,007 ] 107 dagshub - INFO -Repository DDTcodes17/NetworkSecuritySystem initialized!
+[ 2026-03-23 21:03:06,008 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2026-03-23 21:03:06,012 ] 107 dagshub - INFO -Accessing as DDTcodes17
+[ 2026-03-23 21:03:07,599 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/repos/DDTcodes17/NetworkSecuritySystem "HTTP/1.1 200 OK"
+[ 2026-03-23 21:03:09,070 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2026-03-23 21:03:09,081 ] 107 dagshub - INFO -Initialized MLflow to track repo "DDTcodes17/NetworkSecuritySystem"
+[ 2026-03-23 21:03:09,081 ] 107 dagshub - INFO -Repository DDTcodes17/NetworkSecuritySystem initialized!
