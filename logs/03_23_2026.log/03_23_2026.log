@@ -1,12 +1,38 @@
-[ 2026-03-23 20:55:35,445 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
-[ 2026-03-23 20:55:35,448 ] 107 dagshub - INFO -Accessing as DDTcodes17
-[ 2026-03-23 20:55:36,671 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/repos/DDTcodes17/NetworkSecuritySystem "HTTP/1.1 200 OK"
-[ 2026-03-23 20:55:37,996 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
-[ 2026-03-23 20:55:38,007 ] 107 dagshub - INFO -Initialized MLflow to track repo "DDTcodes17/NetworkSecuritySystem"
-[ 2026-03-23 20:55:38,007 ] 107 dagshub - INFO -Repository DDTcodes17/NetworkSecuritySystem initialized!
-[ 2026-03-23 21:03:06,008 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
-[ 2026-03-23 21:03:06,012 ] 107 dagshub - INFO -Accessing as DDTcodes17
-[ 2026-03-23 21:03:07,599 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/repos/DDTcodes17/NetworkSecuritySystem "HTTP/1.1 200 OK"
-[ 2026-03-23 21:03:09,070 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
-[ 2026-03-23 21:03:09,081 ] 107 dagshub - INFO -Initialized MLflow to track repo "DDTcodes17/NetworkSecuritySystem"
-[ 2026-03-23 21:03:09,081 ] 107 dagshub - INFO -Repository DDTcodes17/NetworkSecuritySystem initialized!
+[ 2026-03-23 22:26:45,592 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2026-03-23 22:26:45,609 ] 107 dagshub - INFO -Accessing as DDTcodes17
+[ 2026-03-23 22:26:47,850 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/repos/DDTcodes17/NetworkSecuritySystem "HTTP/1.1 200 OK"
+[ 2026-03-23 22:26:49,895 ] 1025 httpx - INFO -HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2026-03-23 22:26:49,900 ] 107 dagshub - INFO -Initialized MLflow to track repo "DDTcodes17/NetworkSecuritySystem"
+[ 2026-03-23 22:26:49,902 ] 107 dagshub - INFO -Repository DDTcodes17/NetworkSecuritySystem initialized!
+[ 2026-03-23 22:27:30,482 ] 90 root - INFO -Starting Pipeline
+[ 2026-03-23 22:27:30,482 ] 29 root - INFO -Initiating Data Ingestion Configuration.
+[ 2026-03-23 22:27:32,903 ] 39 root - INFO -Raw Data Imported
+[ 2026-03-23 22:27:32,921 ] 46 root - INFO -Train Test Split Initiated
+[ 2026-03-23 22:27:32,923 ] 50 root - INFO -Importing Training and testing data
+[ 2026-03-23 22:27:33,115 ] 55 root - INFO -Import Successful
+[ 2026-03-23 22:27:33,115 ] 66 root - INFO -Data Ingestion Completed
+[ 2026-03-23 22:27:33,115 ] 33 root - INFO -Ingestion Completed.
+[ 2026-03-23 22:27:33,115 ] 40 root - INFO -Data Validation Initiated.
+[ 2026-03-23 22:27:33,316 ] 84 root - INFO -Beginning Data Validation: Number_of_columns
+[ 2026-03-23 22:27:33,316 ] 92 root - INFO -No. of Columns Validation successful on both train and test
+[ 2026-03-23 22:27:33,316 ] 94 root - INFO -Numeric Columns exist Validation begin
+[ 2026-03-23 22:27:33,323 ] 101 root - INFO -Numeric Column Validation ends
+[ 2026-03-23 22:27:33,323 ] 103 root - INFO -Data Drift Validation begins
+[ 2026-03-23 22:27:33,953 ] 45 root - INFO -Data Validation Completed.
+[ 2026-03-23 22:27:33,953 ] 52 root - INFO -Data Transformation Inititated.
+[ 2026-03-23 22:27:33,954 ] 36 root - INFO -Data Transformation Initiated
+[ 2026-03-23 22:27:34,057 ] 40 root - INFO -Segregating Data into Input and target
+[ 2026-03-23 22:27:34,057 ] 51 root - INFO -Performing KNN Imputation as a Pipeline
+[ 2026-03-23 22:27:34,070 ] 55 root - INFO -Preprocessing Imputation Completed
+[ 2026-03-23 22:27:34,073 ] 57 root - INFO -Creating and saving numpy arrays and preprocessor files
+[ 2026-03-23 22:27:34,079 ] 65 root - INFO -Preprocessor Pusher
+[ 2026-03-23 22:27:34,079 ] 67 root - INFO -Returning artifacts
+[ 2026-03-23 22:27:34,085 ] 57 root - INFO -Data transformation Completed.
+[ 2026-03-23 22:27:34,085 ] 64 root - INFO -Model Training Initiated.
+[ 2026-03-23 22:27:34,137 ] 52 root - INFO -Model Training And Evaluation Simultaneous
+[ 2026-03-23 22:27:47,352 ] 55 root - INFO -Obtaining Best Model and best accuracy.
+[ 2026-03-23 22:27:47,450 ] 65 root - INFO -Obtaining ClassificationMetric Artifacts/Reports
+[ 2026-03-23 22:28:20,201 ] 74 root - INFO -Saving Best Model as Pickle File.
+[ 2026-03-23 22:28:20,215 ] 77 root - INFO -Additional Model Folder for pushing to AWS
+[ 2026-03-23 22:28:20,217 ] 69 root - INFO -Model Trained.
+[ 2026-03-23 22:28:28,427 ] 99 root - INFO -Pipeline Finished
